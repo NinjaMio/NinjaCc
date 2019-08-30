@@ -19,10 +19,10 @@
         <blockquote>
           <% if place.photos.last.picture.present? %>
             <%= image_tag (place.photos.last.picture.url) %>
+            <br/>
+            <%= place.photos.last.caption %>
+            <small><%= place.photos.last.user.email %></small>
           <% end %>
-          <br/>
-          <%= place.photos.last.caption %>
-          <small><%= place.photos.last.user.email %></small>
         </blockquote>
       </div>
     <% end %>
