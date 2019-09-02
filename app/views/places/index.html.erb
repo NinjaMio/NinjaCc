@@ -7,8 +7,8 @@
     <% if place.user.present? %>
       <small><%= place.user.email %></small>
     <% end %>
-    <% if place.comments.present? %>
-      <div class="col-12">
+    <div class="col-12">
+      <% if place.comments.present? %>     
         <blockquote>
           <% if place.comments.last.humanized_rating.present? %>
             <b><%= place.comments.last.humanized_rating %></b> -
@@ -16,16 +16,18 @@
           <%= place.comments.last.message %>
           <small><%= place.comments.last.user.email %></small>
         </blockquote>
+      <% end %>
+      <% if place.photos.present? %>
         <blockquote>
-          <% if place.photos.last.picture.present? %>
-            <%= image_tag (place.photos.last.picture.url) %>
-            <br/>
+          <%= image_tag (place.photos.last.picture.url) %>
+          <br/>
+          <% if place.photos.last.caption.present? %>
             <%= place.photos.last.caption %>
             <small><%= place.photos.last.user.email %></small>
           <% end %>
         </blockquote>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
 <div class="pagination-wrapper col-10 offset-1">
